@@ -149,6 +149,7 @@
             {
                 ingredientQuantities[i] = (int)Math.Round(ingredientQuantities[i] * factor);
             }
+
             // Print a message indicating that the recipe has been scaled and display the scaled recipe
             Console.WriteLine("Recipe has been scaled accordingly \n Here is the scaled recipe.");
 
@@ -166,6 +167,7 @@
                 ingredientQuantities[i] = originalQuantities[i];
                 ingredientUnits[i] = originalUnits[i];
             } // print message to indicate that recipe has been reset
+
             Console.WriteLine("Recipe has been reset");
         }
 
@@ -175,13 +177,13 @@
             recipeName = "";
             numOfIngredients = 0;
             numOfSteps = 0;
-    
+
             // clear all the elements of ingredientNames, ingredientQuantities, ingredientUnits, and steps arrays
             Array.Clear(ingredientNames, 0, ingredientNames.Length);
             Array.Clear(ingredientQuantities, 0, ingredientQuantities.Length);
             Array.Clear(ingredientUnits, 0, ingredientUnits.Length);
             Array.Clear(steps, 0, steps.Length);
-    
+
             // print out a message indicating that the recipe has been cleared
             Console.WriteLine("Recipe has been cleared");
         }
@@ -201,21 +203,25 @@
         }
 
         public void ConvertUnits()
-        {   // The below variables are used to store the conversion amounts
+        {
+            // The below variables are used to store the conversion amounts
             double teaspoonsToTablespoons = 1.0 / 3.0;
             double tablespoonsToCups = 1.0 / 16.0;
             double teaspoonsToCups = 1.0 / 48.0;
             //for loop is used to loop through the ingredientQuantities so that all amounts stored are converted if need be
             for (int i = 0; i < numOfIngredients; i++)
-            {   //switch statement is used to convert different measurements
+            {
+                //switch statement is used to convert different measurements
                 switch (ingredientUnits[i])
-                {   // 48 teaspoons makes a cup so it checks if teaspoons is more than a cup
+                {
+                    // 48 teaspoons makes a cup so it checks if teaspoons is more than a cup
                     case "Teaspoons" when ingredientQuantities[i] >= 48:
-                    {    //converts teaspoons directly into cups
+                    {
+                        //converts teaspoons directly into cups
                         int cups = (int)(ingredientQuantities[i] * teaspoonsToCups);
                         //converts to teaspoons first then at the end converts to table spoons
                         int tablespoonsRemaining =
-                            (int)((ingredientQuantities[i] - (cups * 48)) * teaspoonsToTablespoons); 
+                            (int)((ingredientQuantities[i] - (cups * 48)) * teaspoonsToTablespoons);
                         //converts cups and tablespoonsRemaining to teaspoons and minus to get remainder teaspoons
                         int teaspoonsRemaining =
                             (int)(((ingredientQuantities[i] - (cups * 48)) - (tablespoonsRemaining * 3)));
@@ -226,7 +232,8 @@
                         break;
                     // 48 teaspoons makes a cup so it checks if teaspoons is less than a cup
                     case "Teaspoons" when ingredientQuantities[i] < 48:
-                    {   //converts teaspoons directly into tablespoons
+                    {
+                        //converts teaspoons directly into tablespoons
                         int tablespoons = (int)(ingredientQuantities[i] * teaspoonsToTablespoons);
                         //converts tablespoons to teaspoons and minuses the two to get remainder of teaspoons
                         int teaspoonsRemaining = (int)(ingredientQuantities[i] - (tablespoons * 3));
@@ -277,42 +284,48 @@
     {
         static void Main()
         {
-            Recipe recipe = new Recipe();
+            Recipe recipe = new Recipe(); // creates a new instance of the Recipe class
 
-            while (true)
+            while (true) // loop that displays the menu until the program is exited
             {
+                // display the menu options in blue
                 Console.ForegroundColor = ConsoleColor.Blue;
+                //display option to user
                 Console.WriteLine(
                     "Select an option: \n 1. Enter recipe \n 2. Display recipe \n 3. Scale recipe \n 4. Reset quantities \n 5. Clear recipe \n 6. Exit");
+                // display the console text in white
                 Console.ForegroundColor = ConsoleColor.White;
+
                 int option;
+                // read user input and check if it is a valid integer
                 while (!int.TryParse(Console.ReadLine(), out option))
                 {
-                    Recipe.ErrorMessage();
+                    Recipe.ErrorMessage(); // display an error message if the input is invalid
                 }
 
-                switch (option)
+                switch (option) // perform action based on the user's input
                 {
                     case 1:
-                        recipe.EnterRecipe();
-                        recipe.SaveOriginalQuantities();
+                        recipe.EnterRecipe(); // call the EnterRecipe method to enter a new recipe
+                        recipe.SaveOriginalQuantities(); // save the original ingredient quantities
                         break;
                     case 2:
-                        recipe.DisplayRecipe();
+                        recipe.DisplayRecipe(); // call the DisplayRecipe method to display the recipe
                         break;
                     case 3:
+                        // ask the user to enter the scale factor and perform the scaling operation
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine(
                             "Enter scale factor: \n 1 : 0.5 (half) \n 2 : 2 (double) \n 3 : 3(triple) \n type only the number");
                         Console.ForegroundColor = ConsoleColor.White;
                         double factor = 0;
                         int scale;
-                        while (!int.TryParse(Console.ReadLine(), out scale))
+                        while (!int.TryParse(Console.ReadLine(),out scale)) // read user input and check if it is a valid integer
                         {
-                            Recipe.ErrorMessage();
+                            Recipe.ErrorMessage(); // display an error message if the input is invalid
                         }
 
-                        switch (scale)
+                        switch (scale) // perform scaling based on the user's input
                         {
                             case 1:
                                 factor = 0.5;
@@ -328,25 +341,25 @@
                                 break;
                         }
 
-                        recipe.ScaleRecipe(factor);
-                        recipe.DisplayRecipe();
+                        recipe.ScaleRecipe(factor); // call the ScaleRecipe method to scale the recipe
+                        recipe.DisplayRecipe(); // display the scaled recipe
                         break;
                     case 4:
-                        recipe.ResetQuantities();
-                        recipe.PlainDisplayRecipe();
+                        recipe.ResetQuantities(); // call the ResetQuantities method to reset the ingredient quantities
+                        recipe.PlainDisplayRecipe(); // display the recipe without conversions
                         Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("This is the recipe with conversions : ");
                         Console.ForegroundColor = ConsoleColor.White;
-                        recipe.DisplayRecipe();
+                        recipe.DisplayRecipe(); // display the recipe with conversions
                         break;
                     case 5:
-                        recipe.ClearRecipe();
+                        recipe.ClearRecipe(); // call the ClearRecipe method to clear the recipe
                         break;
                     case 6:
-                        Environment.Exit(0);
+                        Environment.Exit(0); // exit the program
                         break;
                     default:
-                        Console.WriteLine("Invalid option");
+                        Console.WriteLine("Invalid option"); // display an error message for invalid option
                         break;
                 }
             }
