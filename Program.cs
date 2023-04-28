@@ -241,6 +241,19 @@
                         recipe.DisplayRecipe();
                         recipe.ConvertUnits();
                         break;
+                    case 4:
+                        recipe.ResetQuantities();
+                        recipe.DisplayRecipe();
+                        break;
+                    case 5:
+                        recipe.ClearRecipe();
+                        break;
+                    case 6:
+                        Environment.Exit(0);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option");
+                        break;
                 }
             }
         }
