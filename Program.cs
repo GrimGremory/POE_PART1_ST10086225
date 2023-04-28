@@ -12,10 +12,12 @@
 
         public void EnterRecipe()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Enter recipe name");
+            Console.ForegroundColor = ConsoleColor.White;
             recipeName = Console.ReadLine();
             Console.WriteLine(
-                "Please type only whole numbers as to be more specific with the recipes \nEnter the number of ingredients:");
+                "Please type only whole numbers as to be more specific with the recipe \nEnter the number of ingredients:");
             numOfIngredients = int.Parse(Console.ReadLine());
 
             ingredientNames = new string[numOfIngredients];
@@ -24,21 +26,26 @@
 
             for (int i = 0; i < numOfIngredients; i++)
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Enter the name of ingredient {0}:", i + 1);
+                Console.ForegroundColor = ConsoleColor.White;
                 ingredientNames[i] = Console.ReadLine();
-
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Enter the quantity of ingredient {0}:", i + 1);
+                Console.ForegroundColor = ConsoleColor.White;
                 while (!int.TryParse(Console.ReadLine(), out ingredientQuantities[i]))
                 {
-                    Console.WriteLine("Invalid input. Please enter a valid number. E.G. an integer");
+                    ErrorMessage();
                 }
 
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Enter the unit of measurement of ingredient {0}:", i + 1);
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1. Teaspoons \n2. Tablespoons \n3. Cups ");
                 int option;
                 while (!int.TryParse(Console.ReadLine(), out option))
                 {
-                    Console.WriteLine("Invalid input. Please enter a valid number. E.G. an integer");
+                    ErrorMessage();
                 }
 
                 switch (option)
@@ -55,10 +62,12 @@
                 }
             }
 
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Enter the number of steps:");
+            Console.ForegroundColor = ConsoleColor.White;
             while (!int.TryParse(Console.ReadLine(), out numOfSteps))
             {
-                Console.WriteLine("Invalid input. Please enter a valid number. E.G. an integer");
+                ErrorMessage();
             }
 
             steps = new string[numOfSteps];
@@ -72,10 +81,14 @@
 
         public void DisplayRecipe()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Recipe Name : " + recipeName + "\n Ingredients: ");
+            Console.ForegroundColor = ConsoleColor.White;
             ConvertUnits();
 
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Steps:");
+            Console.ForegroundColor = ConsoleColor.White;
             for (int i = 0; i < numOfSteps; i++)
             {
                 Console.WriteLine("{0}. {1}", i + 1, steps[i]);
@@ -84,7 +97,9 @@
 
         public void PlainDisplayRecipe()
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("This is the Original recipe ingredients without any conversion :");
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Recipe Name : " + recipeName + "\n Ingredients: ");
             for (int i = 0; i < numOfIngredients; i++)
             {
@@ -116,14 +131,13 @@
 
         public void ClearRecipe()
         {
+            recipeName = "";
             numOfIngredients = 0;
-            ingredientNames = null;
-            ingredientQuantities = null;
-            ingredientUnits = null;
             numOfSteps = 0;
-            steps = null;
-
             Array.Clear(ingredientNames, 0, ingredientNames.Length);
+            Array.Clear(ingredientQuantities, 0, ingredientQuantities.Length);
+            Array.Clear(ingredientUnits, 0, ingredientUnits.Length);
+            Array.Clear(steps, 0, steps.Length);
             Console.WriteLine("Recipe has been cleared");
         }
 
@@ -163,7 +177,7 @@
                         int tablespoons = (int)(ingredientQuantities[i] * teaspoonsToTablespoons);
                         int teaspoonsRemaining = (int)(ingredientQuantities[i] - (tablespoons * 3));
 
-                        Console.WriteLine(tablespoons + "Tablespoons" + teaspoonsRemaining + "Teaspoons" +
+                        Console.WriteLine(tablespoons + " Tablespoons " + teaspoonsRemaining + " Teaspoons " +
                                           ingredientNames[i]);
                     }
                         break;
@@ -171,13 +185,14 @@
                     {
                         int cups = (int)(ingredientQuantities[i] * tablespoonsToCups);
                         int tablespoonsRemaining = (int)((ingredientQuantities[i] - (cups * 16)));
-                        Console.WriteLine(cups + "Cups" + tablespoonsRemaining + "Tablespoons" + ingredientNames[i]);
+                        Console.WriteLine(cups + " Cups " + tablespoonsRemaining + " Tablespoons " +
+                                          ingredientNames[i]);
                     }
                         break;
                     case "Tablespoons" when ingredientQuantities[i] < 16:
                     {
                         int tablespoonsRemaining = (int)(ingredientQuantities[i]);
-                        Console.WriteLine(tablespoonsRemaining + "Tablespoons" + ingredientNames[i]);
+                        Console.WriteLine(tablespoonsRemaining + " Tablespoons " + ingredientNames[i]);
                     }
                         break;
                     case "Cups": // Add custom logic for handling "Cups" case here using lambda functions, if needed
@@ -189,6 +204,14 @@
                 }
             }
         }
+
+        public static void ErrorMessage()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(
+                "Invalid input. Please enter a valid number. E.G. an integer.\n or type a number that matches an option presented.");
+            Console.ForegroundColor = ConsoleColor.White;
+        }
     }
 
     class Program
@@ -199,13 +222,14 @@
 
             while (true)
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine(
                     "Select an option: \n 1. Enter recipe \n 2. Display recipe \n 3. Scale recipe \n 4. Reset quantities \n 5. Clear recipe \n 6. Exit");
-
+                Console.ForegroundColor = ConsoleColor.White;
                 int option;
                 while (!int.TryParse(Console.ReadLine(), out option))
                 {
-                    Console.WriteLine("Invalid input. Please enter a valid integer option.");
+                    Recipe.ErrorMessage();
                 }
 
                 switch (option)
@@ -218,14 +242,15 @@
                         recipe.DisplayRecipe();
                         break;
                     case 3:
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine(
                             "Enter scale factor: \n 1 : 0.5 (half) \n 2 : 2 (double) \n 3 : 3(triple) \n type only the number");
-
+                        Console.ForegroundColor = ConsoleColor.White;
                         double factor = 0;
                         int scale;
                         while (!int.TryParse(Console.ReadLine(), out scale))
                         {
-                            Console.WriteLine("Invalid input. Please enter a valid integer option.");
+                            Recipe.ErrorMessage();
                         }
 
                         switch (scale)
@@ -250,7 +275,9 @@
                     case 4:
                         recipe.ResetQuantities();
                         recipe.PlainDisplayRecipe();
+                        Console.ForegroundColor = ConsoleColor.Blue;
                         Console.WriteLine("This is the recipe with conversions : ");
+                        Console.ForegroundColor = ConsoleColor.White;
                         recipe.DisplayRecipe();
                         break;
                     case 5:

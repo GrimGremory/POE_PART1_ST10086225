@@ -1,0 +1,15 @@
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\bin\Debug\net7.0\ConsoleApp1.exe
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\bin\Debug\net7.0\ConsoleApp1.deps.json
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\bin\Debug\net7.0\ConsoleApp1.runtimeconfig.json
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\bin\Debug\net7.0\ConsoleApp1.dll
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\bin\Debug\net7.0\ConsoleApp1.pdb
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.dll
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\refint\ConsoleApp1.dll
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.pdb
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ConsoleApp1.genruntimeconfig.cache
+C:\Users\Ciaran McCabe\Desktop\Msa\Computer science\Rider\Projects\POE_FINAL_SUBMISSION\ConsoleApp1\POE_PART1_ST10086225\obj\Debug\net7.0\ref\ConsoleApp1.dll
