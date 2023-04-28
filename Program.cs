@@ -1,6 +1,13 @@
-﻿class Program
+﻿namespace ConsoleApp1
 {
-    static void Main()
+    class Recipe
     {
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+        }
     }
 }
