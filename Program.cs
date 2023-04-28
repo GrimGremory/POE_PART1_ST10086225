@@ -24,6 +24,8 @@
 
             for (int i = 0; i < numOfIngredients; i++)
             {
+
+
                 Console.WriteLine("Enter the name of ingredient {0}:", i + 1);
                 ingredientNames[i] = Console.ReadLine();
 
@@ -69,9 +71,10 @@
                 steps[i] = Console.ReadLine();
             }
         }
+
         public void DisplayRecipe()
         {
-            Console.WriteLine("Recipe Name : " +recipeName+" Ingredients: ");
+            Console.WriteLine("Recipe Name : " + recipeName + " Ingredients: ");
             Console.WriteLine("Ingredients:");
             ConvertUnits();
 
@@ -81,6 +84,7 @@
                 Console.WriteLine("{0}. {1}", i + 1, steps[i]);
             }
         }
+
         public void ScaleRecipe(double factor)
         {
             for (int i = 0; i < numOfIngredients; i++)
@@ -91,7 +95,7 @@
             Console.WriteLine("Recipe has been scaled accordingly \n Here is the scaled recipe.");
             ConvertUnits();
         }
-        
+
         public void ResetQuantities()
         {
             for (int i = 0; i < numOfIngredients; i++)
@@ -102,9 +106,7 @@
 
             Console.WriteLine("Recipe has been reset");
         }
-        private int[] originalQuantities;
-        private string[] originalUnits;
-        
+
         public void ClearRecipe()
         {
             numOfIngredients = 0;
@@ -117,11 +119,15 @@
             Array.Clear(ingredientNames, 0, ingredientNames.Length);
         }
 
+        private int[] originalQuantities;
+        private string[] originalUnits;
+
         public void SaveOriginalQuantities()
         {
             originalQuantities = (int[])ingredientQuantities.Clone();
             originalUnits = (string[])ingredientUnits.Clone();
         }
+
         public void ConvertUnits()
         {
             double teaspoonsToTablespoons = 1.0 / 3.0;
@@ -181,6 +187,27 @@
     {
         static void Main()
         {
+            Recipe recipe = new Recipe();
+
+            while (true)
+            {
+                Console.WriteLine(
+                    "Select an option: \n 1. Enter recipe \n 2. Display recipe \n 3. Scale recipe \n 4. Reset quantities \n 5. Clear recipe \n 6. Exit");
+
+                int option;
+                while (!int.TryParse(Console.ReadLine(), out option))
+                {
+                    Console.WriteLine("Invalid input. Please enter a valid integer option.");
+                }
+
+                switch (option)
+                {
+                    case 1:
+                        recipe.EnterRecipe();
+                        recipe.SaveOriginalQuantities();
+                        break;
+                }
+            }
         }
     }
 }
