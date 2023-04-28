@@ -91,6 +91,25 @@
             Console.WriteLine("Recipe has been scaled accordingly \n Here is the scaled recipe.");
             ConvertUnits();
         }
+        
+        public void ResetQuantities()
+        {
+            for (int i = 0; i < numOfIngredients; i++)
+            {
+                ingredientQuantities[i] = originalQuantities[i];
+                ingredientUnits[i] = originalUnits[i];
+            }
+
+            Console.WriteLine("Recipe has been reset");
+        }
+        private int[] originalQuantities;
+        private string[] originalUnits;
+
+        public void SaveOriginalQuantities()
+        {
+            originalQuantities = (int[])ingredientQuantities.Clone();
+            originalUnits = (string[])ingredientUnits.Clone();
+        }
         public void ConvertUnits()
         {
             double teaspoonsToTablespoons = 1.0 / 3.0;
