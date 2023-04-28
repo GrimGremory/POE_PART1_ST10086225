@@ -24,8 +24,6 @@
 
             for (int i = 0; i < numOfIngredients; i++)
             {
-
-
                 Console.WriteLine("Enter the name of ingredient {0}:", i + 1);
                 ingredientNames[i] = Console.ReadLine();
 
@@ -74,14 +72,23 @@
 
         public void DisplayRecipe()
         {
-            Console.WriteLine("Recipe Name : " + recipeName + " Ingredients: ");
-            Console.WriteLine("Ingredients:");
+            Console.WriteLine("Recipe Name : " + recipeName + "\n Ingredients: ");
             ConvertUnits();
 
             Console.WriteLine("Steps:");
             for (int i = 0; i < numOfSteps; i++)
             {
                 Console.WriteLine("{0}. {1}", i + 1, steps[i]);
+            }
+        }
+
+        public void PlainDisplayRecipe()
+        {
+            Console.WriteLine("This is the Original recipe ingredients without any conversion :");
+            Console.WriteLine("Recipe Name : " + recipeName + "\n Ingredients: ");
+            for (int i = 0; i < numOfIngredients; i++)
+            {
+                Console.WriteLine("- {0} {1} {2}", ingredientQuantities[i], ingredientUnits[i], ingredientNames[i]);
             }
         }
 
@@ -117,6 +124,7 @@
             steps = null;
 
             Array.Clear(ingredientNames, 0, ingredientNames.Length);
+            Console.WriteLine("Recipe has been cleared");
         }
 
         private int[] originalQuantities;
@@ -208,7 +216,6 @@
                         break;
                     case 2:
                         recipe.DisplayRecipe();
-                        recipe.ConvertUnits();
                         break;
                     case 3:
                         Console.WriteLine(
@@ -239,10 +246,11 @@
 
                         recipe.ScaleRecipe(factor);
                         recipe.DisplayRecipe();
-                        recipe.ConvertUnits();
                         break;
                     case 4:
                         recipe.ResetQuantities();
+                        recipe.PlainDisplayRecipe();
+                        Console.WriteLine("This is the recipe with conversions : ");
                         recipe.DisplayRecipe();
                         break;
                     case 5:
