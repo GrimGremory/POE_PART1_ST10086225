@@ -104,6 +104,18 @@
         }
         private int[] originalQuantities;
         private string[] originalUnits;
+        
+        public void ClearRecipe()
+        {
+            numOfIngredients = 0;
+            ingredientNames = null;
+            ingredientQuantities = null;
+            ingredientUnits = null;
+            numOfSteps = 0;
+            steps = null;
+
+            Array.Clear(ingredientNames, 0, ingredientNames.Length);
+        }
 
         public void SaveOriginalQuantities()
         {
