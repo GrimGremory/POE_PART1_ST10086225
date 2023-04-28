@@ -71,6 +71,59 @@
         }
     }
 
+    public void ConvertUnits()
+    {
+        double teaspoonsToTablespoons = 1.0 / 3.0;
+        double tablespoonsToCups = 1.0 / 16.0;
+        double teaspoonsToCups = 1.0 / 48.0;
+
+        for (int i = 0; i < numOfIngredients; i++)
+        {
+            switch (ingredientUnits[i])
+            {
+                case "Teaspoons" when ingredientQuantities[i] >= 48:
+                {
+                    int cups = (int)(ingredientQuantities[i] * teaspoonsToCups);
+                    int tablespoonsRemaining = (int)((ingredientQuantities[i] - (cups * 48)) * teaspoonsToTablespoons);
+                    int teaspoonsRemaining =
+                        (int)(((ingredientQuantities[i] - (cups * 48)) - (tablespoonsRemaining * 3)));
+
+                    Console.WriteLine(cups + " Cups " + tablespoonsRemaining + " Tablespoons " +
+                                      teaspoonsRemaining + " Teaspoons " + " of " + ingredientNames[i]);
+                }
+                    break;
+                case "Teaspoons" when ingredientQuantities[i] < 48:
+                {
+                    int tablespoons = (int)(ingredientQuantities[i] * teaspoonsToTablespoons);
+                    int teaspoonsRemaining = (int)(ingredientQuantities[i] - (tablespoons * 3));
+
+                    Console.WriteLine(tablespoons + "Tablespoons" + teaspoonsRemaining + "Teaspoons" +
+                                      ingredientNames[i]);
+                }
+                    break;
+                case "Tablespoons" when ingredientQuantities[i] >= 16:
+                {
+                    int cups = (int)(ingredientQuantities[i] * tablespoonsToCups);
+                    int tablespoonsRemaining = (int)((ingredientQuantities[i] - (cups * 16)));
+                    Console.WriteLine(cups + "Cups" + tablespoonsRemaining + "Tablespoons" + ingredientNames[i]);
+                }
+                    break;
+                case "Tablespoons" when ingredientQuantities[i] < 16:
+                {
+                    int tablespoonsRemaining = (int)(ingredientQuantities[i]);
+                    Console.WriteLine(tablespoonsRemaining + "Tablespoons" + ingredientNames[i]);
+                }
+                    break;
+                case "Cups": // Add custom logic for handling "Cups" case here using lambda functions, if needed
+                    break;
+                default: // Handle invalid units here
+                    Console.WriteLine("Invalid unit of measurement for ingredient {0}: {1}", ingredientNames[i],
+                        ingredientUnits[i]);
+                    break;
+            }
+        }
+    }
+
     class Program
     {
         static void Main()
