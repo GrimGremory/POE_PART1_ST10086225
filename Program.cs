@@ -206,6 +206,41 @@
                         recipe.EnterRecipe();
                         recipe.SaveOriginalQuantities();
                         break;
+                    case 2:
+                        recipe.DisplayRecipe();
+                        recipe.ConvertUnits();
+                        break;
+                    case 3:
+                        Console.WriteLine(
+                            "Enter scale factor: \n 1 : 0.5 (half) \n 2 : 2 (double) \n 3 : 3(triple) \n type only the number");
+
+                        double factor = 0;
+                        int scale;
+                        while (!int.TryParse(Console.ReadLine(), out scale))
+                        {
+                            Console.WriteLine("Invalid input. Please enter a valid integer option.");
+                        }
+
+                        switch (scale)
+                        {
+                            case 1:
+                                factor = 0.5;
+                                break;
+                            case 2:
+                                factor = 2;
+                                break;
+                            case 3:
+                                factor = 3;
+                                break;
+                            default:
+                                Console.WriteLine("Invalid option");
+                                break;
+                        }
+
+                        recipe.ScaleRecipe(factor);
+                        recipe.DisplayRecipe();
+                        recipe.ConvertUnits();
+                        break;
                 }
             }
         }
