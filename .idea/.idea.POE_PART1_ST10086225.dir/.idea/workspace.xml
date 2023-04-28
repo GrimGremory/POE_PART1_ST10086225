@@ -4,9 +4,7 @@
     <projectFile>ConsoleApp1.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc1c12a6-40f1-4ac1-8cd1-63c3fcb33dda" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-    </list>
+    <list default="true" id="bc1c12a6-40f1-4ac1-8cd1-63c3fcb33dda" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682669962841</updated>
-      <workItem from="1682669964493" duration="2167000" />
+      <workItem from="1682669964493" duration="2755000" />
     </task>
     <servers />
   </component>
