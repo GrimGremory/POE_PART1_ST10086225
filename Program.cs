@@ -81,6 +81,16 @@
                 Console.WriteLine("{0}. {1}", i + 1, steps[i]);
             }
         }
+        public void ScaleRecipe(double factor)
+        {
+            for (int i = 0; i < numOfIngredients; i++)
+            {
+                ingredientQuantities[i] = (int)Math.Round(ingredientQuantities[i] * factor);
+            }
+
+            Console.WriteLine("Recipe has been scaled accordingly \n Here is the scaled recipe.");
+            ConvertUnits();
+        }
         public void ConvertUnits()
         {
             double teaspoonsToTablespoons = 1.0 / 3.0;
